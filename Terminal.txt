@@ -1,0 +1,32 @@
+Repo GitHub:
+-----------
+https://github.com/andros26/FoodPyme.git
+
+
+Terminal:
+---------
+D:\proj\FoodPymeBLK\Orders>dotnet new install MudBlazor.Templates
+
+D:\proj\FoodPymeBLK\Orders>dotnet new mudblazor --interactivity Server --name Orders.Frontend --all-interactive
+
+GitHub:
+-------
+D:\proj\FoodPymeBLK> git init
+D:\proj\FoodPymeBLK> git remote add origin https://github.com/andros26/FoodPymeBLK.git
+D:\proj\FoodPymeBLK> git add .
+D:\proj\FoodPymeBLK> git commit -m "create app structure"
+D:\proj\FoodPymeBLK> git branch -M main
+D:\proj\FoodPymeBLK> git push -u origin main
+
+
+D:\proj\FoodPyme> git status
+D:\proj\FoodPyme> git add .
+D:\proj\FoodPyme> git commit -m "Project creation"
+D:\proj\FoodPyme> git checkout -b pym-01
+
+Conexión a BD_SQLServer:
+------------------------
+Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
+
+YouTobe:  [Parte 13  |  00:00]
+https://www.youtube.com/watch?v=R8NnFIU-h9o
