@@ -6,17 +6,17 @@ using Orders.Frontend.Repositories;
 using Orders.Shared.Entities;
 using System.Net;
 
-namespace Orders.Frontend.Components.Pages.Countries;
+namespace Orders.Frontend.Components.Pages.Categories;
 
 [Authorize(Roles = "Admin")]
-public partial class CountriesIndex
+public partial class CategoriesIndex
 {
-    private List<Country>? Countries { get; set; }
-    private MudTable<Country> table = new();
+    private List<Category>? Categories { get; set; }
+    private MudTable<Category> table = new();
     private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
-    private const string baseUrl = "api/countries";
+    private const string baseUrl = "api/categories";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
 
     [Inject] private IRepository Repository { get; set; } = null!;
@@ -29,11 +29,6 @@ public partial class CountriesIndex
     protected override async Task OnInitializedAsync()
     {
         await LoadTotalRecordsAsync();
-    }
-
-    private void StatesAction(Country country)
-    {
-        NavigationManager.NavigateTo($"/countries/details/{country.Id}");
     }
 
     private async Task LoadTotalRecordsAsync()
@@ -58,7 +53,7 @@ public partial class CountriesIndex
         loading = false;
     }
 
-    private async Task<TableData<Country>> LoadListAsync(TableState state, CancellationToken cancellationToken)
+    private async Task<TableData<Category>> LoadListAsync(TableState state, CancellationToken cancellationToken)
     {
         int page = state.Page + 1;
         int pageSize = state.PageSize;
@@ -69,18 +64,18 @@ public partial class CountriesIndex
             url += $"&filter={Filter}";
         }
 
-        var responseHttp = await Repository.GetAsync<List<Country>>(url);
+        var responseHttp = await Repository.GetAsync<List<Category>>(url);
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();
             Snackbar.Add(message!, Severity.Error);
-            return new TableData<Country> { Items = [], TotalItems = 0 };
+            return new TableData<Category> { Items = [], TotalItems = 0 };
         }
         if (responseHttp.Response == null)
         {
-            return new TableData<Country> { Items = [], TotalItems = 0 };
+            return new TableData<Category> { Items = [], TotalItems = 0 };
         }
-        return new TableData<Country>
+        return new TableData<Category>
         {
             Items = responseHttp.Response,
             TotalItems = totalRecords
@@ -107,11 +102,11 @@ public partial class CountriesIndex
             var parameters = new DialogParameters
             {
                 { "Id", id }
-            }; dialog = await DialogService.ShowAsync<CountryEdit>("Editar país", parameters, options);
+            }; dialog = await DialogService.ShowAsync<CategoryEdit>("Editar categoría", parameters, options);
         }
         else
         {
-            dialog = await DialogService.ShowAsync<CountryCreate>("Nuevo país", options);
+            dialog = await DialogService.ShowAsync<CategoryCreate>("Nuevo categoría", options);
         }
 
         var result = await dialog.Result;
@@ -122,11 +117,11 @@ public partial class CountriesIndex
         }
     }
 
-    private async Task DeleteAsync(Country country)
+    private async Task DeleteAsync(Category category)
     {
         var parameters = new DialogParameters
         {
-            { "Message", $"Estas seguro de borrar el país: {country.Name}" }
+            { "Message", $"Estas seguro de borrar la categoría: {category.Name}" }
         };
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, CloseOnEscapeKey = true };
         var dialog = await DialogService.ShowAsync<ConfirmDialog>("Confirmación", parameters, options);
@@ -136,12 +131,12 @@ public partial class CountriesIndex
             return;
         }
 
-        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{country.Id}");
+        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{category.Id}");
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
             {
-                NavigationManager.NavigateTo("/countries");
+                NavigationManager.NavigateTo("/categories");
             }
             else
             {
