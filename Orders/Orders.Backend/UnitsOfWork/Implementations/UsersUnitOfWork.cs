@@ -15,6 +15,12 @@ namespace Orders.Backend.UnitsOfWork.Implementations
             _usersRepository = usersRepository;
         }
 
+        public async Task<User> GetUserAsync(Guid userId) => await _usersRepository.GetUserAsync(userId);
+
+        public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword) => await _usersRepository.ChangePasswordAsync(user, currentPassword, newPassword);
+
+        public async Task<IdentityResult> UpdateUserAsync(User user) => await _usersRepository.UpdateUserAsync(user);
+
         public async Task<SignInResult> LoginAsync(LoginDTO model) => await _usersRepository.LoginAsync(model);
 
         public async Task LogoutAsync() => await _usersRepository.LogoutAsync();
