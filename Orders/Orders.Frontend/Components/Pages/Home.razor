@@ -12,3 +12,55 @@
 </AuthorizeView>
 
 <MudText Class="m-2">FoodPymeBLK V1. 2026-2</MudText>
+
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pa-0">
+    
+    @* Sección Hero: Usamos MudStack para el layout horizontal/vertical *@
+    <MudStack Row="true" Wrap="Wrap.Wrap" Class="home-hero align-center justify-space-between pa-8">
+        
+        @* Contenedor de Texto *@
+        <MudBox Class="hero-content">
+            <MudText Typo="Typo.h3" Class="hero-title">Deliciosos</MudText>
+            <MudText Typo="Typo.h2" Class="hero-subtitle">Buñuelos Rellenos</MudText>
+            <MudText Typo="Typo.h4" Class="hero-category">
+                Categoría <span class="changecontent"></span>
+            </MudText>
+            <MudText Typo="Typo.body1" Class="hero-description">
+                ¡Descubre el sabor irresistible de nuestros buñuelos rellenos!
+                Un bocado de felicidad en cada buñuelo relleno.
+            </MudText>
+            <MudButton Variant="Variant.Filled" Class="btn-domicilios mt-4">
+                Domicilios
+            </MudButton>
+        </MudBox>
+
+        @* Contenedor de Imagen *@
+        <MudBox Class="hero-image">
+            <MudImage Src="images/products/background.png" Alt="Buñuelos Rellenos" Fluid="true" />
+        </MudBox>
+
+    </MudStack>
+
+    @* Sección de Tarjetas (Box) *@
+    <MudGrid Class="pa-8">
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="product-box-card">
+                <MudImage Src="images/products/box1.png" Alt="Caja 1" Fluid="true" />
+            </MudPaper>
+        </MudItem>
+        
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="product-box-card">
+                <MudImage Src="images/products/box2.png" Alt="Caja 2" Fluid="true" />
+            </MudPaper>
+        </MudItem>
+        
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="product-box-card">
+                <MudImage Src="images/products/box3.png" Alt="Caja 3" Fluid="true" />
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+</MudContainer>

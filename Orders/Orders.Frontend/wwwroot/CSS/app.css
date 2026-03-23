@@ -1,0 +1,149 @@
+﻿/* Aplicar la fuente del prototipo si la tienes en index.html */
+.mud-typography {
+    font-family: 'Uchen', serif !important;
+}
+
+/* Degradado del prototipo aplicado al fondo principal */
+.mud-main-content {
+    background: linear-gradient(135deg, #FFD700, #FFA500, rgb(255, 151, 71));
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Estilo para los botones de la tabla (Editar/Borrar) */
+.mud-button-filled.mud-button-filled-primary {
+    background-color: #573818 !important; /* Café oscuro */
+    color: white !important;
+}
+
+/* Los chips de categorías con el naranja del prototipo */
+.mud-chip.mud-chip-color-primary {
+    background-color: rgba(161,109,14,1) !important;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+/* Sombras para las tablas, similar a tus #box .card */
+.mud-table {
+    border-radius: 22px !important;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5) !important;
+    overflow: hidden;
+}
+
+/* 1. Degradado para el fondo del Drawer (de chocolate a café tostado) */
+.mud-drawer {
+    background: linear-gradient(180deg, #3E2723 0%, #795548 100%) !important;
+    color: #FDFDFD !important;
+}
+
+/* 2. Estilos para los iconos dentro del menú */
+.mud-nav-link .mud-icon-root {
+    transition: all 0.3s ease;
+}
+
+/* 3. EFECTO DE RESALTADO DEL ÍTEM SELECCIONADO (Efecto 'Glassmorphism') */
+.mud-nav-link.active {
+    background-color: rgba(251, 192, 45, 0.2) !important; /* Amarillo traslúcido */
+    color: #FBC02D !important; /* Texto en amarillo ámbar */
+    backdrop-filter: blur(10px); /* Efecto de esmerilado suave */
+    border-radius: 12px; /* Bordes redondeados de la burbuja */
+    margin: 8px 12px; /* Espacio alrededor de la burbuja */
+}
+
+    /* El icono también cambia a amarillo cuando está activo */
+    .mud-nav-link.active .mud-icon-root {
+        color: #FBC02D !important;
+    }
+
+/* 4. Efecto sutil al pasar el mouse por encima (Hover) */
+.mud-nav-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #FDFDFD !important;
+    border-radius: 12px;
+    margin: 8px 12px;
+}
+
+/* --- ESTILOS HOME BUÑUELO LOKO --- */
+
+.home-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+    /* Degradado principal del prototipo */
+    background: linear-gradient(135deg, #FFD700, #FFA500, rgb(255, 151, 71));
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    max-width: 500px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.hero-title, .hero-subtitle {
+    font-weight: bold !important;
+    font-family: 'Uchen', serif;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.3));
+}
+
+.btn-domicilios {
+    background-color: #573818 !important; /* Café oscuro */
+    color: white !important;
+    font-weight: bold;
+}
+
+/* --- ANIMACIÓN DE TEXTO --- */
+
+.changecontent::after {
+    content: '';
+    color: #573818;
+    animation: changetext 10s infinite linear;
+    font-weight: bold;
+}
+
+@keyframes changetext {
+    0% {
+        content: " Queso";
+    }
+
+    25% {
+        content: " Arequipe";
+    }
+
+    50% {
+        content: " Chocolate";
+    }
+
+    75% {
+        content: " Bocadillo";
+    }
+
+    100% {
+        content: " Queso";
+    }
+}
+
+/* --- TARJETAS DE PRODUCTOS --- */
+
+.product-box-card {
+    border-radius: 22px !important;
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+
+    .product-box-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .product-box-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
