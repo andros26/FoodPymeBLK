@@ -42,6 +42,18 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         };
     }
 
+    public virtual async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination)
+    {
+        var queryable = _entity.AsQueryable();
+        var count = await queryable.CountAsync();
+        int totalPages = (int)Math.Ceiling((double)count / pagination.RecordsNumber);
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = totalPages
+        };
+    }
+
     public virtual async Task<ActionResponse<T>> AddAsync(T entity)
     {
         _context.Add(entity);

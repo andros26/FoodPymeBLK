@@ -10,6 +10,8 @@ public interface IGenericRepository<T> where T : class
 
     Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
 
+    Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination);
+
     Task<ActionResponse<T>> GetAsync(int id);
 
     Task<ActionResponse<IEnumerable<T>>> GetAsync();

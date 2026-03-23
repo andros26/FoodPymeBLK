@@ -7,7 +7,14 @@
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Buñuelo loko</MudText>
+
+        <MudLink href="/" Class="ml-3 d-flex align-center">
+            <MudImage Src="images/logo.png"
+                      Alt="Buñuelo loko Logo"
+                      Height="40"
+                      Class="rounded-lg" />
+        </MudLink>
+
         <MudSpacer />
         <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
         <MudMenu Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" ActivationEvent="@MouseEvent.MouseOver" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
@@ -101,5 +108,6 @@
         false => Icons.Material.Outlined.DarkMode,
     };
 }
+
 
 

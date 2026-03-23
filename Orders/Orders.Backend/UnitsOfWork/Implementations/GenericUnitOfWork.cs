@@ -18,6 +18,8 @@ public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
 
     public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _repository.GetTotalRecordsAsync(pagination);
 
+    public virtual async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination) => await _repository.GetTotalPagesAsync(pagination);
+
     public virtual async Task<ActionResponse<T>> AddAsync(T model) => await _repository.AddAsync(model);
 
     public virtual async Task<ActionResponse<T>> DeleteAsync(int id) => await _repository.DeleteAsync(id);
